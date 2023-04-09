@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    주문하기
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="wrap">
+            <h2 class="title-center" style="padding-bottom: 30px">
+                주문하기</h2>
+            <form method='post'>
+                {% csrf_token %}
+                {{productinformation.as_p}}
+                {{outboundform.as_p}}
+                <button type="submit" class="btn btn-primary" style="margin-top: 30px">저장하기</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

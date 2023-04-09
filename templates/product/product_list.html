@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}
+    상품주문 페이지
+{% endblock %}
+
+{% block content %}
+    <div class="container timeline-container">
+        <div class="row">
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                {% for e in erp %}
+                    <div class="card" style="width: 18rem; margin: 20px; padding: 10px" >
+                        <img
+                            src={{ e.image }}
+                            class="card-img-top"
+                            alt="..."
+                            style="height:200px">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ e.name }}</h5>
+                            <p class="card-text" style="text-align : right">{{ e.price }}원</p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">설명: {{ e.description }}</li>
+                            <li class="list-group-item">사이즈: {{ e.size }}</li>
+                        </ul>
+                        <div class="card-body">
+                            <!--url 뒤에는 urls에서 지정한 이름-->
+                            <a class="nav-link" style="text-align:right" href="{% url 'inbound' e.id  %}">
+                                수량입고
+                            <span class="sr-only"></span></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
